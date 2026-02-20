@@ -19,6 +19,7 @@
         @foreach(var employee in employees)
             {
                 <div class="employee">@employee.Name @employee.DateOfBirth @employee.Dept</div>
+                <a href="/detail-page/@employee.Name">click to see details</a>
             }
         </div>
     <footer>
