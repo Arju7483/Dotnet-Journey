@@ -1,0 +1,22 @@
+﻿@{
+    var name = "Bob";
+}
+@{ 
+    // local function example
+    int getExponent(int x){
+        return (1 << x);
+    }
+}
+<!Doctype <html xmlns="http://www.w3.org/1999/xhtml">
+    <head><title>Asp.Net Demo Project</title></head>
+    <body>
+        <h1 style="background-color:red">Welcome @name</h1>
+    @if(name == "Alice")
+        {
+            <h3>Good to see you Alice</h3>
+        }
+        else{
+            <h3> Dear @name your score is : @getExponent(3)</h3>
+        }
+    </body>
+</html>

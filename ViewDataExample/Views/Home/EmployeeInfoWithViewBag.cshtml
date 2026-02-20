@@ -1,0 +1,29 @@
+﻿@using ViewDataExample.Models;
+@{
+    List<Employee> employees = new List<Employee>();
+    employees = ViewBag.employees;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.title</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+
+    <header>
+        <h2>@ViewData["heading"]</h2>
+    </header>
+    <div>
+
+        @foreach (var employee in employees)
+        {
+            <div class="employee">@employee.Name @employee.DateOfBirth @employee.Dept</div>
+        }
+    </div>
+    <footer>
+        <p>© 2026</p>
+    </footer>
+
+</body>
+</html>
