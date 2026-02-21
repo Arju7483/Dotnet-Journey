@@ -45,7 +45,7 @@ namespace ViewDataExample.Controllers
             var matchingEmployee = employees.Where(x => x.Name == name).FirstOrDefault();
             if(matchingEmployee != null)
             {
-                return View("EmployeeDetails", matchingEmployee);
+                return View("EmployeeDetails", matchingEmployee); // passing modal data to view
             }
             else return NotFound(name);
         }
