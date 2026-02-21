@@ -1,0 +1,31 @@
+﻿@using RazorViewAssignment.Models;
+@model CityWeather
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Weather app</title>
+    <link rel="stylesheet" href="~/StyleSheet.css" />
+</head>
+<body>
+    <div class="page-content">
+        <h1>Weather</h1>
+
+                <div class="box">
+                    <div class="flex-borderless">
+                        @* Left Side: City Info *@
+                        <div class="w-20">
+                            <h2 class="margin-bottom">@Model.CityName</h2>
+                            <div class="text-dark-grey">@Model.DateAndTime.ToString("hh:mm tt")</div>
+                        </div>
+                <div class="w-20 border-left text-center">
+                    <h1 class="margin-top-20">
+                        @Model.TemperatureFahrenheit
+                        <span class="text-grey" style="font-size: 0.6em;">°F</span>
+                    </h1>
+                </div>
+                    </div>
+                </div>
+    </div>
+</body>
+</html>

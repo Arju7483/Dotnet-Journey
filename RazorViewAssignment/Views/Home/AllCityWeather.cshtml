@@ -1,0 +1,44 @@
+﻿@using RazorViewAssignment.Models;
+@model List<CityWeather>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Weather app</title>
+    <link rel="stylesheet" href="~/StyleSheet.css" />
+</head>
+<body>
+    <div class="page-content">
+        <h1>Weather</h1>
+
+        <div class="flex margin-top">
+            @foreach (CityWeather weather in Model)
+            {
+                string colorClass = weather.TemperatureFahrenheit <= 44 ? "blue-back" :
+                (weather.TemperatureFahrenheit <= 74 ? "green-back" : "orange-back");
+
+                <div class="box @colorClass">
+                    <div class="flex-borderless">
+                        @* Left Side: City Info *@
+                        <div class="w-20">
+                            <h2 class="margin-bottom">@weather.CityName</h2>
+                            <div class="text-dark-grey">@weather.DateAndTime.ToString("hh:mm tt")</div>
+                            <div class="margin-top">
+                                <a href="~/weather/@weather.CityUniqueCode">Details</a>
+                            </div>
+                        </div>
+
+                        @* Right Side: Temperature *@
+                        <div class="w-20 border-left text-center">
+                            <h1 class="margin-top-20">
+                                @weather.TemperatureFahrenheit
+                                <span class="text-grey" style="font-size: 0.6em;">°F</span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
