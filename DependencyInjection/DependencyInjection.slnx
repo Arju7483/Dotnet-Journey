@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../CitiesService/Services.csproj" Id="615c44dc-5e41-4e8f-9145-20aaca19c6a5" />
+  <Project Path="../Interfaces/Interfaces.csproj" Id="5ca97ce5-76dd-45cb-b3ef-0803003b81da" />
+  <Project Path="DependencyInjection.csproj" />
+</Solution>
