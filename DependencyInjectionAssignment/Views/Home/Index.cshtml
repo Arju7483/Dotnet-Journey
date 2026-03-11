@@ -1,0 +1,79 @@
+﻿@model List<CityWeather>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h2>Weather</h2>
+        </div>
+
+        <div class="page-content">
+
+            <div class="flex">
+
+                @{
+                    int index = 0;
+                }
+
+                @foreach (CityWeather item in Model)
+                {
+                    string backClass = "";
+
+                    if (index == 0)
+                        backClass = "blue-back";
+                    else if (index == 1)
+                        backClass = "green-back";
+                    else
+                        backClass = "orange-back";
+
+                    index++;
+                }
+
+                @foreach (CityWeather item in Model)
+                {
+                    <div class="box w-25 inline-block">
+
+                        <div class="flex-borderless">
+
+                            <div class="w-50">
+                                <div>
+                                    <strong>@item.CityName</strong>
+                                </div>
+
+                                <div class="text-grey">
+                                    @item.DateAndTime.ToString("hh:mm tt")
+                                </div>
+
+                                <div class="margin-top">
+                                    <a href="~/weather/@item.CityUniqueCode">Details</a>
+                                </div>
+                            </div>
+
+                            <div class="w-50 text-right">
+                                <span style="font-size:30px;font-weight:bold">
+                                    @item.TemperatureFahrenheit
+                                </span>
+                                <span>°F</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../CityWeatherService/CityWeatherServices.csproj" Id="04a2d452-7757-4646-bb9f-24d36e09179b" />
+  <Project Path="../ICityWeatherServices/CityWeatherInterfaces.csproj" Id="fca0a2c4-21c9-4445-ac86-34a31e540b21" />
+  <Project Path="../Models/Models.csproj" Id="d402f5fe-bdfe-4189-959a-76355a090753" />
+  <Project Path="DependencyInjectionAssignment.csproj" />
+</Solution>
