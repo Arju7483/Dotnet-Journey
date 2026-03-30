@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../Entities/Entities.csproj" />
+  <Project Path="../InterfacesForUnitTestExample/InterfacesForUnitTestExample.csproj" />
+  <Project Path="../Tests/Tests.csproj" />
+  <Project Path="../UnitTestServices/UnitTestServices.csproj" />
+  <Project Path="UnitTestExample.csproj" />
+</Solution>
