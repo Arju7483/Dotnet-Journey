@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CleanArchitectureCRUD.API/CleanArchitectureCRUD.API.csproj" />
+  <Project Path="CleanArchitectureCRUD.Application/CleanArchitectureCRUD.Application.csproj" />
+  <Project Path="CleanArchitectureCRUD.Domain/CleanArchitectureCRUD.Domain.csproj" />
+  <Project Path="CleanArchitectureCRUD.Infrastructure/CleanArchitectureCRUD.Infrastructure.csproj" />
+</Solution>

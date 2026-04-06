@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../CRUDInterfaces/CRUDInterfaces.csproj" />
+  <Project Path="../CRUDServices/CRUDServices.csproj" />
+  <Project Path="../Entities/Entities.csproj" />
+  <Project Path="CRUDExample.csproj" />
+</Solution>
