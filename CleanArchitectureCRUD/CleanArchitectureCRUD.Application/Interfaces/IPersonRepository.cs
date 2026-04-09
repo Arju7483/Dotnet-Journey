@@ -11,5 +11,6 @@ namespace CleanArchitectureCRUD.Application.Interfaces
         Task<Person> AddAsync (Person person);
         Task<List<Person>> GetAllAsync ();
         Task<PersonResponse> UpdatePerson(PersonUpdateRequest person);
+        Task<Person>GetPersonByIdAsync(Guid id);
     }
 }

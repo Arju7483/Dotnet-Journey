@@ -24,6 +24,17 @@ namespace CleanArchitectureCRUD.Infrastructure.Repository
         {
             return await _appDbContext.Persons.ToListAsync();
         }
+
+        public async Task<Person> GetPersonByIdAsync(Guid id)
+        {
+            Person? person = await _appDbContext.Persons.FindAsync(id);
+            if (person == null)
+            {
+                throw new Exception("Not found");
+            }
+            return person;
+        }
+
         public async Task<PersonResponse> UpdatePerson(PersonUpdateRequest person)
         {
             Person existing = await _appDbContext.Persons.FirstOrDefaultAsync(x => x.PersonID == person.PersonID);

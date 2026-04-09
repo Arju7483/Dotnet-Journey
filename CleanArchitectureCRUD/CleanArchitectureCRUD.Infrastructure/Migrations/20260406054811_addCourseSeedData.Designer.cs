@@ -4,6 +4,7 @@ using CleanArchitectureCRUD.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CleanArchitectureCRUD.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260406054811_addCourseSeedData")]
+    partial class addCourseSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,8 +60,6 @@ namespace CleanArchitectureCRUD.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("CourseId");
-
-                    b.HasIndex("InstructorId");
 
                     b.HasIndex("StudentId");
 
@@ -152,17 +153,9 @@ namespace CleanArchitectureCRUD.Infrastructure.Migrations
 
             modelBuilder.Entity("CleanArchitectureCRUD.Domain.Entities.Course", b =>
                 {
-                    b.HasOne("CleanArchitectureCRUD.Domain.Entities.Person", "Instructor")
-                        .WithMany()
-                        .HasForeignKey("InstructorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CleanArchitectureCRUD.Domain.Entities.Student", null)
                         .WithMany("Courses")
                         .HasForeignKey("StudentId");
-
-                    b.Navigation("Instructor");
                 });
 
             modelBuilder.Entity("CleanArchitectureCRUD.Domain.Entities.Student", b =>

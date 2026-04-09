@@ -1,4 +1,4 @@
-﻿using CleanArchitectureCRUD.Application.Interfaces;
+using CleanArchitectureCRUD.Application.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 namespace CleanArchitectureCRUD.Application.Services
 {
@@ -7,6 +7,8 @@ namespace CleanArchitectureCRUD.Application.Services
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IPersonService, PersonService>();
+            services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<IStudentService, StudentService>();
             
             return services;
         }

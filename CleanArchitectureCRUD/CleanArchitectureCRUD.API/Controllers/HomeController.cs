@@ -9,10 +9,11 @@ namespace CleanArchitectureCRUD.API.Controllers
     public class HomeController : ControllerBase 
     {
         private readonly IPersonService _personService;
-
-        public HomeController(IPersonService personService)
+        private readonly ICourseService _courseService;
+        public HomeController(IPersonService personService, ICourseService courseService)
         {
             _personService = personService;
+            _courseService = courseService;
         }
 
         [HttpGet] 
@@ -40,5 +41,18 @@ namespace CleanArchitectureCRUD.API.Controllers
         {
             return await _personService.UpdatePerson(request);
         }
+        [HttpGet]
+        [Route("/all-course")]
+        public async Task<List<CourseResponse>> GetAllCourse()
+        {
+            return await _courseService.GetAllCourses();
+
+        }
+        //[HttpPost]
+        //[Route("/add-student")]
+        //public async Task<StudentResponse> AddStudent([FromBody] StudentAddRequest request)
+        //{
+
+        //}
     }
 }
