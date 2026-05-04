@@ -33,7 +33,6 @@ namespace AuthorizationExample.Controllers
 
             Employee newEmployee = new Employee()
             {
-                Id = RandomNumberGenerator.GetInt32(1, 10000),
                 Name = employee.Name,
                 Position = employee.Position,
                 Salary = employee.Salary
@@ -55,6 +54,7 @@ namespace AuthorizationExample.Controllers
                 return Problem(detail: ex.Message, title: "An error occurred while creating the employee.");
             }
         }
+        [Authorize(Policy = "AdultAdmin")]
         [Route("get-all")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()

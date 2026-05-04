@@ -3,6 +3,7 @@ using AuthorizationExample.IdentityEntities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 [ApiController]
 [Route("api/[controller]")] // Good practice to prefix with 'api'
@@ -39,6 +40,8 @@ public class RegisterAndLoginController : ControllerBase
 
         if (result.Succeeded)
         {
+
+            // auto sign-in after registration
             await _signInManager.SignInAsync(newUser, isPersistent: false);
             return Ok(new { Message = "User registration successful" });
         }
@@ -60,6 +63,7 @@ public class RegisterAndLoginController : ControllerBase
         {
             return BadRequest(ModelState);
         }
+
         var result = await _signInManager.PasswordSignInAsync(
             user.Email,
             user.Password,

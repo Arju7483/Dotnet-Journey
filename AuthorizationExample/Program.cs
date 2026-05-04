@@ -3,10 +3,14 @@ using AuthorizationExample.IdentityEntities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using AuthorizationExample.Repository;
+using AuthorizationExample.AuthorizationRequirements;
+using Microsoft.AspNetCore.Authorization;
+using AuthorizationExample.IdentityAdditionalConfiguration;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers(); // Required for MapControllers()
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();
 // 2. Swagger Configuration
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -28,8 +32,20 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
     options.Password.RequireDigit = true;
 
 }).AddEntityFrameworkStores<ApplicationDbContext>()
-  .AddDefaultTokenProviders();
+  .AddDefaultTokenProviders()
+  .AddClaimsPrincipalFactory<AdditionalUserClaimsPrinciplaFactory>(); // this for custom claim pricipal
 
+
+// authorization policy registration
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdultAdmin", policy =>
+    {
+        policy.RequireRole("Admin");
+        policy.AddRequirements(new MinimumAgeRequirement(20));
+        //policy.RequireClaim("Department", "IT"); 
+    });
+});
 var app = builder.Build();
 
 // 5. Middleware Pipeline (ORDER MATTERS!)
